@@ -131,6 +131,4 @@ function obj:start()
   self.timer:start()
 end
 
-
-
 return obj

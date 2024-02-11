@@ -1,5 +1,5 @@
 -- drop table answers
--- DROP TABLE IF EXISTS answers;
+DROP TABLE IF EXISTS answers;
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS applications (
