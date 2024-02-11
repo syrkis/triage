@@ -1,0 +1,48 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode
+##
+# Xcode
+##
+build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+# Other Xcode specific settings
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# Python (for Jupyter notebooks and potential data processing scripts)
+*.pyc
+*.pyo
+*.egg-info/
+__pycache__/
+
+# Virtual environment (common names for Python virtual environments)
+venv/
+env/
+.virtualenv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# SQLite (It's good to ignore the actual database, as you might not want to keep pushing updates to it. Instead, you can have a script to initialize it or keep a backup elsewhere.)
+backend/database/triage.db
+
+# Other potential unneeded files
+*.log
+*.swp
+*.bak
+
