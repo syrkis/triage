@@ -1,21 +1,22 @@
 #!/bin/bash
 
-if [ -f "$HOME/.hammerspoon/installation_complete" ]; then
-    echo "Installation already completed."
-    exit 0
-fi
-
 # Define paths
-dbPath="$HOME/data/psychoscope/psychoscope.db"
+appName="Triage.app"
+dbPath="$HOME/data/triage/triage.db"
 thisDir=$(dirname "$0")
 ddlPath="$thisDir/ddl.sql"
+appPath="$thisDir/$appName"
+targetPath="/Applications/$appName"
+argument="$1"
+
+echo "Argument: $argument"
 
 # Adjust PATH for Homebrew on both Intel and Apple Silicon Macs
 export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
 
 # Function to display messages
 log_message() {
-    echo "$1"
+    echo "$1" 
 }
 
 # Check and install Homebrew if not installed
@@ -38,16 +39,18 @@ fi
 spoonsDir="$HOME/.hammerspoon/Spoons"
 mkdir -p "$spoonsDir" || { log_message "Failed to create Spoons directory."; exit 1; }
 
-# Copy Spoons into Hammerspoon directory
-log_message "Copying Spoons into Hammerspoon directory..."
-cp -r "$thisDir/Spoons/"* "$spoonsDir" || { log_message "Failed to copy Spoons."; exit 1; }
+# Copy Spoons into Hammerspoon directory if not already present
+if [ ! -d "$spoonsDir" ]; then
+    log_message "Copying Spoons into Hammerspoon directory..."
+    cp -r "$thisDir/Spoons/"* "$spoonsDir" || { log_message "Failed to copy Spoons."; exit 1; }
+fi
 
 # Inject Spoons loading and starting commands into init.lua
 initFile="$HOME/.hammerspoon/init.lua"
 if [ ! -f "$initFile" ]; then
     log_message "Creating Hammerspoon init.lua..."
     touch "$initFile"
-    echo 'hs.menubar.hideIcon()' >> "$initFile"
+    # echo 'hs.menubar:removeFromMenuBar()' >> "$initFile"
 fi
 
 # Inject if not present
@@ -77,9 +80,7 @@ if ! sqlite3 "$dbPath" < "$ddlPath"; then
 fi
 
 # Add Hammerspoon to the login items
-log_message "Adding Hammerspoon to login items..."
-osascript -e 'tell application "System Events" to make new login item at end with properties {path:"/Applications/Hammerspoon.app", hidden:true, name:"Hammerspoon"}' || log_message "Failed to add Hammerspoon to login items."
+# log_message "Adding Hammerspoon to login items..."
+# osascript -e 'tell application "System Events" to make new login item at end with properties {path:"/Applications/Hammerspoon.app", hidden:true, name:"Hammerspoon"}' || log_message "Failed to add Hammerspoon to login items."
 
 log_message "Setup completed successfully."
-
-touch "$HOME/.hammerspoon/installation_complete"

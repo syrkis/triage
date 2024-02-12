@@ -2,7 +2,7 @@ local obj = {}
 obj.__index = obj
 
 -- Metadata
-obj.name = "Psychoscope Logging"
+obj.name = "Triage Logging"
 obj.version = "0.1"
 obj.author = "Noah Syrkis"
 obj.homepage = "https://syrkis.com"
@@ -10,7 +10,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 
 -- Path to the SQLite database
 local sqlite3 = require("hs.sqlite3")
-local dbPath  = os.getenv("HOME") .. "/data/psychoscope/psychoscope.db"
+local dbPath  = os.getenv("HOME") .. "/data/triage/triage.db"
 
 -- Function to log the active window's title and app name
 local function logActiveWindowInfo()

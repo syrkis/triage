@@ -1,0 +1,226 @@
+\documentclass[aspectratio=32]{beamer}
+
+
+% Load packages
+\usepackage{datetime}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{listings}
+\usepackage{ifthen}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage[backend=biber, style=numeric]{biblatex}
+
+% Metadata
+\title{Triage by Review of Intention, Activity, Growth, and Engagement}
+\date{\mydate\today}
+\author{Noah Syrkis}
+
+% BibTeX setup
+\addbibresource{/Users/syrkis/code/press/library.bib}
+
+% Listings and date setup
+\newdateformat{mydate}{\monthname[\THEMONTH] \THEDAY, \THEYEAR}
+% tight list
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Font setup
+\usefonttheme{serif}
+\renewcommand{\baselinestretch}{1.5}
+
+% Text color setup
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{frametitle}{fg=black,bg=white}
+\setbeamercolor{title}{fg=black,bg=white}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+\setbeamercolor{bibliography entry journal}{fg=black}
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{tableofcontents}{fg=black}
+\setbeamercolor{section in toc}{fg=black}
+\setbeamercolor{subsection in toc}{fg=black}
+\setbeamercolor{itemize item}{fg=black}
+\setbeamercolor{item}{fg=black}
+\setbeamercolor{caption name}{fg=black}
+\setbeamercolor{caption}{fg=black}
+
+% Miscellaneous settings
+\setbeamertemplate{frametitle continuation}[from second]
+% section in toc number should be without dot after number
+\setbeamertemplate{section in toc}{\inserttocsectionnumber{} \inserttocsection}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{headline}{}
+
+% Footer setup
+\setbeamertemplate{footline}
+{
+  \leavevmode
+  \hbox{
+    \ifnum\thepage>1
+      \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex]{page number}
+        \hfill\insertpagenumber{} of \insertdocumentendpage\hspace{0.5cm}
+        % \hfill\insertframenumber/\inserttotalframenumber\hspace{0.5cm}
+      \end{beamercolorbox}
+    \fi
+  }
+    \vspace*{0.5cm}
+}
+
+% Modify the frametitle template
+\setbeamertemplate{frametitle}
+{
+  \vskip0.4cm
+  \leavevmode
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=0ex,dp=0ex]{frametitle}
+      \hskip0.7cm\usebeamerfont{frametitle}%
+        {\insertsectionnumber~\insertframetitle} % Otherwise, display the frame title with section number
+    \end{beamercolorbox}
+  }
+}
+
+% Custom title page
+\defbeamertemplate*{title page}{customized}
+{
+  \begin{minipage}[c][\textheight][c]{0.55\textwidth}
+    \begin{center}
+      \usebeamerfont{title}\inserttitle\par
+      \vspace{1cm}
+      \small\usebeamerfont{author}\insertauthor\par
+      \small\usebeamerfont{date}\insertdate\par
+    \end{center}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c][0.7\textheight][c]{0.35\textwidth}
+    \tableofcontents[hideallsubsections]
+  \end{minipage}
+}
+
+\newlength{\maxwidth}
+\setlength{\maxwidth}{.70\textwidth} % Example: 80% of the text width
+\newlength{\maxheight}
+\setlength{\maxheight}{.70\textheight} % Example: 70% of the text height
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\begin{document}
+
+  % Front page
+  \begin{frame}[allowframebreaks]
+    \titlepage
+  \end{frame}
+
+  \section{\textbar{} Triage the term}\label{triage-the-term}
+
+  \begin{frame}[allowframebreaks]{\textbar{} Triage the term}
+  \begin{itemize}
+  \tightlist
+  \item
+    Triage is a term from the medical field.
+  \item
+    It is the process of determining the priority of patients.
+  \item
+    Based on severity, urgency, and the potential for recovery.
+  \item
+    Used pictorially to describe the process of prioritizing work.
+  \end{itemize}
+  \end{frame}
+
+  \section{\textbar{} Triage the repo}\label{triage-the-repo}
+
+  \begin{frame}[allowframebreaks]{\textbar{} Triage the repo}
+  \begin{itemize}
+  \tightlist
+  \item
+    A evolving productivity app.
+  \item
+    A collection of automation scripts, tools and resources.
+  \item
+    Currently three central features.
+  \end{itemize}
+
+  \framebreak
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    Automated activity tracking.
+  \item
+    Daily automated survey.
+  \item
+    todo.txt integration.
+  \end{enumerate}
+  \end{frame}
+
+  \section{\textbar{} Tracking}\label{tracking}
+
+  \begin{frame}[allowframebreaks]{\textbar{} Tracking}
+  \begin{itemize}
+  \tightlist
+  \item
+    Logs app and window title every 30 seconds.
+  \item
+    Database is local.
+  \end{itemize}
+  \end{frame}
+
+  \section{\textbar{} Surveying}\label{surveying}
+
+  \begin{frame}[allowframebreaks]{\textbar{} Surveying}
+  \begin{itemize}
+  \tightlist
+  \item
+    Asks a series of questions after 18.00.
+  \item
+    The Qs are defined in todo.txt.
+  \item
+    The As are stored in the local database.
+  \end{itemize}
+  \end{frame}
+
+  \section{\textbar{} todo.txt}\label{todo.txt}
+
+  \begin{frame}[allowframebreaks]{\textbar{} todo.txt}
+  \begin{itemize}
+  \tightlist
+  \item
+    A simple and extensible file format.
+  \item
+    Can be used to define the Q for the survey.
+  \item
+    Only rule: every line after ``// survey\textbackslash n'' is a Q.
+  \end{itemize}
+  \end{frame}
+
+  \section{\textbar{} Roadmap}\label{roadmap}
+
+  \begin{frame}[allowframebreaks]{\textbar{} Roadmap}
+  \begin{itemize}
+  \tightlist
+  \item
+    Add a web interface.
+  \item
+    Social todo.txt.
+  \item
+    Windows and Linux support.
+  \end{itemize}
+  \end{frame}
+
+  % bibliography
+  
+\begin{frame}[allowframebreaks]
+  \Large{References}
+  \small\linespread{1.2}\printbibliography
+\end{frame}
+
+\end{document}

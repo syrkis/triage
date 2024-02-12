@@ -11,7 +11,7 @@ obj.homepage = "https://syrkis.com"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
 local sqlite3  = require("hs.sqlite3")
-local dbPath   = os.getenv("HOME") .. "/data/psychoscope/psychoscope.db"
+local dbPath   = os.getenv("HOME") .. "/data/triage/triage.db"
 local filePath = os.getenv("HOME") .. "/Desktop/todo.txt"
 
 
